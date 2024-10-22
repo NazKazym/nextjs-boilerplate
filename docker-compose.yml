@@ -1,0 +1,14 @@
+services:
+  mainservice:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/application
+      - /application/node_modules # Prevent node_modules from being overwritten
+    environment:
+      - NODE_ENV=development
+    working_dir: /application # Set working directory
+    command: npm run dev
